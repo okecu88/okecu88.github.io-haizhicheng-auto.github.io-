@@ -16,8 +16,10 @@
                         primary: '#C8102E', // 工业级沉稳红，贴合制造行业调性
                         secondary: '#0F4C81', // 商务专业深蓝
                         dark: '#0A1F38', // 深邃底色提升质感
-                        light: '#F8FAFC', // 柔和浅灰背景降低视觉疲劳
+                        light: '#F5F7FA', // 全局柔和工业浅灰背景
                         neutral: '#64748B', // 中性辅助灰
+                        card: '#FFFFFF', // 卡片纯白底色
+                        section: '#F8FAFC', // 交替区块背景
                     },
                     fontFamily: {
                         sans: ['Inter','system-ui','sans-serif'],
@@ -38,36 +40,54 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
+        /* 全局背景升级：添加细微工业纹理底色 */
+        body {
+            background-color: #F5F7FA;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
         .content-auto { content-visibility: auto; }
         .text-shadow { text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
         .transition-custom { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        /* 产品卡片背景质感升级 */
         .product-card {
-            @apply bg-white rounded-lg shadow-md hover:shadow-xl hover:translate-y-[-5px] transition-custom p-4 border border-gray-100;
+            @apply bg-card rounded-lg shadow-md hover:shadow-xl hover:translate-y-[-5px] transition-custom p-4 border border-gray-100;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
         }
+        /* 设备卡片背景质感升级 */
         .equipment-card {
-            @apply bg-white rounded-lg shadow-md hover:shadow-xl hover:translate-y-[-5px] transition-custom overflow-hidden border border-gray-100;
+            @apply bg-card rounded-lg shadow-md hover:shadow-xl hover:translate-y-[-5px] transition-custom overflow-hidden border border-gray-100;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
         }
         .equipment-img {
             @apply w-full h-56 object-contain bg-white p-2;
         }
+        /* 品牌标签背景质感升级 */
         .brand-tag {
             @apply bg-white rounded-lg shadow-sm p-3 text-center hover:shadow-md hover:bg-primary/5 hover:border-primary/20 transition-custom border border-gray-100;
         }
         .ecu-tag {
             @apply bg-white rounded-md p-2 text-center border border-gray-200 hover:border-primary/30 hover:bg-primary/5 transition-custom text-sm;
         }
+        /* 工厂卡片背景质感升级 */
         .factory-card {
             @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-custom;
         }
         .factory-img {
             @apply h-60 w-full object-cover;
         }
+        /* 区块背景渐变遮罩 */
+        .section-gradient {
+            background: linear-gradient(180deg, rgba(245,247,250,0) 0%, rgba(245,247,250,1) 100%);
+        }
     </style>
 </head>
-<body class="font-sans text-dark bg-light">
+<body class="font-sans text-dark">
 
-<!-- 导航栏 - 升级磨砂玻璃效果 + 新LOGO + 公司名称更新 -->
-<nav id="navbar" class="fixed top-0 left-0 w-full z-[9999] transition-custom py-4 bg-dark/90 backdrop-blur-md">
+<!-- 导航栏 - 升级磨砂玻璃质感 + 新LOGO + 公司名称更新 -->
+<nav id="navbar" class="fixed top-0 left-0 w-full z-[9999] transition-custom py-4 bg-dark/85 backdrop-blur-lg shadow-sm">
     <div class="w-full px-4 md:px-8 flex justify-between items-center">
         <a href="#" class="text-2xl font-bold text-shadow text-white flex items-center">
             <img src="https://s41.ax1x.com/2026/03/23/peKFqJJ.png" 
@@ -107,9 +127,10 @@
     </div>
 </nav>
 
-<!-- 首页banner - 公司名称更新 -->
-<section id="home" class="w-screen h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://picsum.photos/id/1071/1920/1080');">
-    <div class="absolute inset-0 bg-gradient-to-b from-dark/80 to-dark/50"></div>
+<!-- 首页banner - 背景渐变升级 + 公司名称更新 -->
+<section id="home" class="w-screen h-screen flex items-center justify-center bg-cover bg-center relative" style="background-image: url('https://picsum.photos/id/1071/1920/1080');">
+    <div class="absolute inset-0 bg-gradient-to-b from-dark/90 to-dark/60"></div>
+    <div class="section-gradient absolute inset-0 top-1/2"></div>
     <div class="w-full px-4 relative z-10 text-center">
         <h1 class="text-[clamp(2.8rem,6vw,4.5rem)] font-bold text-white mb-6 leading-tight text-shadow">
             海志诚汽车零部件 <span class="text-secondary">品质铸就未来</span>
@@ -127,7 +148,7 @@
     </div>
 </section>
 
-<!-- 关于我们 -->
+<!-- 关于我们 - 背景升级为纯白区块，与全局纹理形成区分 -->
 <section id="about" class="w-screen py-24 bg-white">
     <div class="w-full px-4 md:px-8">
         <div class="text-center mb-16">
@@ -159,8 +180,8 @@
     </div>
 </section>
 
-<!-- 核心业务 -->
-<section id="services" class="w-screen py-24 bg-light">
+<!-- 核心业务 - 背景保留全局纹理，卡片做渐变质感升级 -->
+<section id="services" class="w-screen py-24 bg-transparent">
     <div class="w-full px-4 md:px-8">
         <div class="text-center mb-16">
             <h2 class="text-[clamp(2rem,3.5vw,3rem)] font-bold mb-4">核心业务</h2>
@@ -205,7 +226,7 @@
     </div>
 </section>
 
-<!-- 工厂设备模块 -->
+<!-- 工厂设备模块 - 背景升级为纯白区块 -->
 <section id="factory-equipment" class="w-screen py-24 bg-white">
     <div class="w-full px-4 md:px-8">
         <div class="text-center mb-16">
@@ -289,7 +310,7 @@
         </div>
 
         <!-- 底部中英文说明文字 -->
-        <div class="bg-light p-8 rounded-lg shadow-md max-w-7xl mx-auto">
+        <div class="bg-section p-8 rounded-lg shadow-md max-w-7xl mx-auto">
             <p class="text-gray-700 leading-relaxed mb-4 text-lg">
                 高品质专业PCB打样，高精度SMT加工，实现微米级精准控制，定制生产一站式服务，提供一站式自动化ECU电子控制单元配套服务,从设计到生产直供，自动化加工生产线，融合先进技术与精细管理打造卓越品质产品。
             </p>
@@ -300,8 +321,8 @@
     </div>
 </section>
 
-<!-- 工厂实景 - 公司名称更新 -->
-<section id="factory" class="w-screen py-24 bg-light">
+<!-- 工厂实景 - 背景保留全局纹理 -->
+<section id="factory" class="w-screen py-24 bg-transparent">
     <div class="w-full px-4 md:px-8">
         <div class="text-center mb-16">
             <h2 class="text-[clamp(2rem,3.5vw,3rem)] font-bold mb-4">工厂实景</h2>
@@ -358,7 +379,7 @@
     </div>
 </section>
 
-<!-- 自研检测设备 -->
+<!-- 自研检测设备 - 背景升级为纯白区块 -->
 <section id="equipment" class="w-screen py-24 bg-white">
     <div class="w-full px-4 md:px-8">
         <div class="text-center mb-16">
@@ -367,11 +388,11 @@
             <p class="text-neutral max-w-4xl mx-auto text-lg">先进的自研检测设备，确保产品品质稳定可靠</p>
         </div>
         <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-            <div class="bg-light rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-custom">
+            <div class="bg-section rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-custom">
                 <img src="https://s41.ax1x.com/2026/03/19/pemm8C4.png" class="w-full h-80 object-cover" alt="国产车防盗匹配平台">
                 <div class="p-8"><h3 class="text-2xl font-semibold">国产车防盗匹配平台</h3></div>
             </div>
-            <div class="bg-light rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-custom">
+            <div class="bg-section rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-custom">
                 <img src="https://s41.ax1x.com/2026/03/19/pemmG8J.png" class="w-full h-80 object-cover" alt="ECU综合测试平台">
                 <div class="p-8"><h3 class="text-2xl font-semibold">ECU综合测试平台</h3></div>
             </div>
@@ -379,8 +400,8 @@
     </div>
 </section>
 
-<!-- 适配车型 -->
-<section id="series" class="w-screen py-24 bg-light">
+<!-- 适配车型 - 背景保留全局纹理 -->
+<section id="series" class="w-screen py-24 bg-transparent">
     <div class="w-full px-4 md:px-8">
         <div class="text-center mb-16">
             <h2 class="text-[clamp(2rem,3.5vw,3rem)] font-bold mb-4">适配车型</h2>
@@ -473,7 +494,7 @@
     </div>
 </section>
 
-<!-- 产品展示 -->
+<!-- 产品展示 - 背景升级为纯白区块 -->
 <section id="products" class="w-screen py-24 bg-white">
     <div class="w-full px-4 md:px-8">
         <div class="text-center mb-16">
@@ -576,8 +597,8 @@
     </div>
 </section>
 
-<!-- 联系我们 -->
-<section id="contact" class="w-screen py-24 bg-light">
+<!-- 联系我们 - 背景保留全局纹理 + 新增双手机号配置 -->
+<section id="contact" class="w-screen py-24 bg-transparent">
     <div class="w-full px-4 md:px-8">
         <div class="text-center mb-16">
             <h2 class="text-[clamp(2rem,3.5vw,3rem)] font-bold mb-4">联系我们</h2>
@@ -599,29 +620,37 @@
                             </p>
                         </div>
                     </li>
-                    <!-- 联系电话 -->
+                    <!-- 联系电话 - 新增双手机号 -->
                     <li class="flex items-start">
                         <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mr-6">
                             <i class="fa-solid fa-phone text-2xl text-primary"></i>
                         </div>
                         <div>
                             <h4 class="font-medium text-xl mb-2">联系电话</h4>
-                            <p class="text-gray-700 text-lg mb-2">19128796896</p>
+                            <p class="text-gray-700 text-lg mb-1">联系一号：19128796896</p>
+                            <p class="text-gray-700 text-lg mb-2">联系二号：19120698329</p>
                             <p class="text-neutral text-base leading-relaxed italic">
-                                Contact Number: +86 19128796896
+                                Contact Number 1: +86 19128796896
+                            </p>
+                            <p class="text-neutral text-base leading-relaxed italic">
+                                Contact Number 2: +86 19120698329
                             </p>
                         </div>
                     </li>
-                    <!-- 微信咨询 -->
+                    <!-- 微信咨询 - 同步双手机号说明 -->
                     <li class="flex items-start">
                         <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mr-6">
                             <i class="fa-brands fa-weixin text-2xl text-primary"></i>
                         </div>
                         <div>
                             <h4 class="font-medium text-xl mb-2">微信咨询</h4>
-                            <p class="text-gray-700 text-lg mb-2">19128796896（微信同号）</p>
+                            <p class="text-gray-700 text-lg mb-1">一号微信：19128796896（微信同号）</p>
+                            <p class="text-gray-700 text-lg mb-2">二号微信：19120698329（微信同号）</p>
                             <p class="text-neutral text-base leading-relaxed italic mb-2">
-                                WeChat ID: 19128796896 (same as phone number)
+                                WeChat ID 1: 19128796896 (same as phone number)
+                            </p>
+                            <p class="text-neutral text-base leading-relaxed italic mb-2">
+                                WeChat ID 2: 19120698329 (same as phone number)
                             </p>
                             <p class="text-neutral text-base">扫码添加，支持产品咨询/报价/定制</p>
                             <p class="text-neutral text-base leading-relaxed italic">
